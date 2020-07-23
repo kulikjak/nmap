@@ -126,7 +126,10 @@
 # *                                                                         *
 # ***************************************************************************/
 
-import gtk
+import gi
+
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk
 
 from zenmapGUI.higwidgets.higboxes import HIGHBox
 from zenmapGUI.higwidgets.higbuttons import HIGButton
@@ -146,7 +149,7 @@ class ScanCommandToolbar(HIGHBox):
         HIGHBox.__init__(self)
 
         self.command_label = HIGEntryLabel(_("Command:"))
-        self.command_entry = gtk.Entry()
+        self.command_entry = Gtk.Entry()
 
         self._pack_noexpand_nofill(self.command_label)
         self._pack_expand_fill(self.command_entry)
@@ -177,9 +180,9 @@ class ScanToolbar(HIGHBox):
         self._create_target()
         self._create_profile()
 
-        self.scan_button = gtk.Button(_("Scan"))
+        self.scan_button = Gtk.Button(_("Scan"))
         #self.scan_button = HIGButton(_("Scan "), gtk.STOCK_MEDIA_PLAY)
-        self.cancel_button = gtk.Button(_("Cancel"))
+        self.cancel_button = Gtk.Button(_("Cancel"))
         #self.cancel_button = HIGButton(_("Cancel "), gtk.STOCK_CANCEL)
 
         self._pack_noexpand_nofill(self.target_label)
@@ -246,8 +249,8 @@ class ScanToolbar(HIGHBox):
     selected_target = property(get_selected_target, set_selected_target)
 
 if __name__ == "__main__":
-    w = gtk.Window()
-    box = gtk.VBox()
+    w = Gtk.Window()
+    box = Gtk.VBox()
     w.add(box)
 
     stool = ScanToolbar()
@@ -256,6 +259,6 @@ if __name__ == "__main__":
     box.pack_start(stool)
     box.pack_start(sctool)
 
-    w.connect("delete-event", lambda x, y: gtk.main_quit())
+    w.connect("delete-event", lambda x, y: Gtk.main_quit())
     w.show_all()
-    gtk.main()
+    Gtk.main()

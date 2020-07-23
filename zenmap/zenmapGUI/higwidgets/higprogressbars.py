@@ -134,9 +134,12 @@ higwidgets/higprogressbars.py
 
 __all__ = ['HIGLabeledProgressBar']
 
-import gtk
+import gi
 
-from higboxes import HIGHBox
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk
+
+from .higboxes import HIGHBox
 
 
 class HIGLabeledProgressBar(HIGHBox):
@@ -145,7 +148,7 @@ class HIGLabeledProgressBar(HIGHBox):
         if label:
             self.label = HIGEntryLabel(label)
             self.pack_label(self.label)
-            self.progress_bar = gtk.ProgressBar()
+            self.progress_bar = Gtk.ProgressBar()
             self.progress_bar.set_size_request(80, 16)
             self.pack_label(self.progress_bar)
 

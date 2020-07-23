@@ -132,9 +132,12 @@ higwidgets/higentries.py
    entries related classes
 """
 
-import gtk
+import gi
 
-HIGTextEntry = gtk.Entry
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk
+
+HIGTextEntry = Gtk.Entry
 
 
 class HIGPasswordEntry(HIGTextEntry):

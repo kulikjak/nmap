@@ -139,10 +139,9 @@ import unittest
 
 import zenmapCore.I18N
 
-from types import StringTypes
 try:
     import subprocess
-except ImportError, e:
+except ImportError as e:
     raise ImportError(str(e) + ".\n" + _("Python 2.4 or later is required."))
 
 import zenmapCore.Paths
@@ -252,7 +251,7 @@ class NmapCommand(object):
         if self.xml_is_temp:
             try:
                 os.remove(self.xml_output_filename)
-            except OSError, e:
+            except OSError as e:
                 if e.errno != errno.ENOENT:
                     raise
 

@@ -125,20 +125,22 @@
 # *                                                                         *
 # ***************************************************************************/
 
-import gtk
-import pango
+import gi
+ 
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk
 
 from radialnet.core.Info import INFO
 from radialnet.gui.Image import Pixmaps
 
 
-class AboutDialog(gtk.AboutDialog):
+class AboutDialog(Gtk.AboutDialog):
     """
     """
     def __init__(self):
         """
         """
-        gtk.AboutDialog.__init__(self)
+        Gtk.AboutDialog.__init__(self)
 
         self.set_name(INFO['name'])
         self.set_version(INFO['version'])
