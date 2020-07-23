@@ -125,8 +125,12 @@
 # *                                                                         *
 # ***************************************************************************/
 
+import gi
+
+gi.require_version("Gtk", "3.0")
+from gi.repository import GdkPixbuf
+
 import os
-import gtk
 import array
 
 from zenmapCore.Paths import Path
@@ -190,7 +194,7 @@ class Image:
 
             file = self.get_icon(icon, image_type)
             self.__cache[icon + image_type] = \
-                    gtk.gdk.pixbuf_new_from_file(file)
+                    GdkPixbuf.Pixbuf.new_from_file(file)
 
         return self.__cache[icon + image_type]
 

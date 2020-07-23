@@ -224,4 +224,4 @@ if __name__ == "__main__":
     i.set_start_point(0, 0)
     i.set_final_point(1, 1)
 
-    print len(i.get_points(10)), i.get_points(10)
+    print(len(i.get_points(10)), i.get_points(10))
