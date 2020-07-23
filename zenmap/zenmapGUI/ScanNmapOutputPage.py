@@ -145,7 +145,7 @@ import zenmapCore.I18N
 
 def scan_entry_data_func(widget, cell_renderer, model, iter):
     """Set the properties of a cell renderer for a scan entry."""
-    cell_renderer.set_property("ellipsize", Pango.EllipsizeMode.ELLIPSIZE_END)
+    cell_renderer.set_property("ellipsize", Pango.EllipsizeMode.END)
     cell_renderer.set_property("style", Pango.Style.NORMAL)
     cell_renderer.set_property("strikethrough", False)
     entry = model.get_value(iter, 0)

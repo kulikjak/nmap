@@ -158,7 +158,7 @@ class ScanRunDetailsPage(HIGVBox):
         self.debug_label = HIGEntryLabel(_('Debug level:'))
         self.info_debug_label = HIGEntryLabel(na)
 
-        self.command_expander = Gtk.Expander(
+        self.command_expander = Gtk.Expander.new(
                 "<b>" + _("Command Info") + "</b>")
         self.command_expander.set_use_markup(True)
 
@@ -212,7 +212,7 @@ class ScanRunDetailsPage(HIGVBox):
         self.closed_label = HIGEntryLabel(_('Closed ports:'))
         self.info_closed_label = HIGEntryLabel(na)
 
-        self.general_expander = Gtk.Expander(
+        self.general_expander = Gtk.Expander.new(
                 "<b>" + _("General Info") + "</b>")
         self.general_expander.set_use_markup(True)
 
@@ -274,7 +274,7 @@ class ScanRunDetailsPage(HIGVBox):
         self.info_closed_label.set_text(str(scan.get_closed_ports()))
 
         for scaninfo in scan.get_scaninfo():
-            exp = Gtk.Expander('<b>%s - %s</b>' % (
+            exp = Gtk.Expander.new('<b>%s - %s</b>' % (
                 _('Scan Info'), scaninfo['type'].capitalize()))
             exp.set_use_markup(True)
 
