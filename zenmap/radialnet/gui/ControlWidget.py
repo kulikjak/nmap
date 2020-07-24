@@ -361,7 +361,7 @@ class ControlVariableWidget(Gtk.DrawingArea):
 
         self.queue_draw()
 
-    def expose(self, widget, event):
+    def expose(self, widget, context):
         """
         Drawing callback
         @type  widget: GtkWidget
@@ -373,7 +373,7 @@ class ControlVariableWidget(Gtk.DrawingArea):
         """
         self.set_size_request(100, 30)
 
-        self.context = widget.window.cairo_create()
+        self.context = context
         self.__draw()
 
         return True
@@ -1181,7 +1181,7 @@ class ControlNavigation(Gtk.DrawingArea):
 
         return False
 
-    def expose(self, widget, event):
+    def expose(self, widget, context):
         """
         Drawing callback
         @type  widget: GtkWidget
@@ -1193,7 +1193,7 @@ class ControlNavigation(Gtk.DrawingArea):
         """
         self.set_size_request(120, 130)
 
-        self.context = widget.window.cairo_create()
+        self.context = context
         self.__draw()
 
         return False
