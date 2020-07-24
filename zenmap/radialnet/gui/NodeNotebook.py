@@ -447,7 +447,7 @@ class SystemPage(BWScrolledWindow):
 
         self.__address_label = BWSectionLabel(_('Address:'))
         self.__address_list = Gtk.ComboBoxText.new_with_entry()
-        self.__address_list.child.set_editable(False)
+        self.__address_list.get_child().set_editable(False)
 
         for address in self.__node.get_info('addresses'):
 
@@ -470,7 +470,7 @@ class SystemPage(BWScrolledWindow):
 
             self.__hostname_label = BWSectionLabel(_('Hostname:'))
             self.__hostname_list = Gtk.ComboBoxText.new_with_entry()
-            self.__hostname_list.child.set_editable(False)
+            self.__hostname_list.get_child().set_editable(False)
 
             for hostname in self.__node.get_info('hostnames'):
 
@@ -617,7 +617,7 @@ class SystemPage(BWScrolledWindow):
             self.__fp_label = BWSectionLabel(_('Used ports:'))
 
             self.__fp_ports_list = Gtk.ComboBoxText.new_with_entry()
-            self.__fp_ports_list.child.set_editable(False)
+            self.__fp_ports_list.get_child().set_editable(False)
 
             self.__fp_vbox = BWVBox()
 
