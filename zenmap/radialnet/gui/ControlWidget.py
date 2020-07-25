@@ -383,8 +383,8 @@ class ControlVariableWidget(Gtk.DrawingArea):
         """
         allocation = self.get_allocation()
 
-        self.__center_of_widget = (allocation.width / 2,
-                                   allocation.height / 2)
+        self.__center_of_widget = (allocation.width // 2,
+                                   allocation.height // 2)
 
         xc, yc = self.__center_of_widget
 
@@ -1295,8 +1295,8 @@ class ControlNavigation(Gtk.DrawingArea):
         # Getting allocation reference
         allocation = self.get_allocation()
 
-        self.__center_of_widget = (allocation.width / 2,
-                                   allocation.height / 2)
+        self.__center_of_widget = (allocation.width // 2,
+                                   allocation.height // 2)
 
         self.__draw_rotate_control()
         self.__draw_move_control()
