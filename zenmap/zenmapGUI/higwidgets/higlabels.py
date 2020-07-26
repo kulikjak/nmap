@@ -151,7 +151,8 @@ class HIGSectionLabel(Gtk.Label):
         if text:
             self.set_markup("<b>%s</b>" % (text))
             self.set_justify(Gtk.Justification.LEFT)
-            self.set_alignment(0, 0.50)
+            self.props.xalign = 0
+            self.props.yalign = 0.5
             self.set_line_wrap(True)
 
 
@@ -176,8 +177,8 @@ class Hint(Gtk.EventBox, object):
         self.hint = hint
 
         self.hint_image = Gtk.Image()
-        self.hint_image.set_from_stock(
-                Gtk.STOCK_DIALOG_INFO, Gtk.IconSize.SMALL_TOOLBAR)
+        self.hint_image.set_from_icon_name(
+                "dialog-information", Gtk.IconSize.SMALL_TOOLBAR)
 
         self.add(self.hint_image)
 
@@ -192,19 +193,23 @@ class HintWindow(Gtk.Window):
     def __init__(self, hint):
         Gtk.Window.__init__(self, type=Gtk.WindowType.POPUP)
         self.set_position(Gtk.WindowPosition.MOUSE)
-        bg_color = Gdk.color_parse("#fbff99")
+        self.set_resizable(False)
 
-        self.modify_bg(Gtk.StateType.NORMAL, bg_color)
+        bg_color = Gdk.RGBA()
+        bg_color.parse("#fbff99")
+        self.override_background_color(Gtk.StateFlags.NORMAL, bg_color)
 
         self.event = Gtk.EventBox()
-        self.event.modify_bg(Gtk.StateType.NORMAL, bg_color)
+        self.event.override_background_color(Gtk.StateFlags.NORMAL, bg_color)
         self.event.set_border_width(10)
         self.event.connect("button-press-event", self.close)
 
         self.hint_label = Gtk.Label(label=hint)
         self.hint_label.set_use_markup(True)
         self.hint_label.set_line_wrap(True)
-        self.hint_label.set_alignment(0.0, 0.5)
+        self.hint_label.set_max_width_chars(52)
+        self.hint_label.props.xalign = 0
+        self.hint_label.props.yalign = 0.5
 
         self.event.add(self.hint_label)
         self.add(self.event)
@@ -218,9 +223,10 @@ class HIGEntryLabel(Gtk.Label):
     Simple label, like the ones used to label entries
     """
     def __init__(self, text=None):
-        Gtk.Label.__init__(self, text)
+        Gtk.Label.__init__(self, label=text)
         self.set_justify(Gtk.Justification.LEFT)
-        self.set_alignment(0, 0.50)
+        self.props.xalign = 0
+        self.props.yalign = 0.5
         self.set_use_markup(True)
         self.set_line_wrap(True)
 
@@ -230,7 +236,7 @@ class HIGDialogLabel(Gtk.Label):
     Centered, line-wrappable label, usually used on dialogs.
     """
     def __init__(self, text=None):
-        Gtk.Label.__init__(self, text)
+        Gtk.Label.__init__(self, label=text)
         self.set_justify(Gtk.Justification.CENTER)
         self.set_use_markup(True)
         self.set_line_wrap(True)

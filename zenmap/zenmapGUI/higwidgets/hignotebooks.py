@@ -131,7 +131,6 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GObject
 
-from .higspinner import HIGSpinner
 from .higboxes import HIGHBox
 from .higbuttons import HIGButton
 
@@ -144,7 +143,7 @@ class HIGNotebook(Gtk.Notebook):
 
 class HIGClosableTabLabel(HIGHBox):
     __gsignals__ = {
-            'close-clicked': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, ())
+            'close-clicked': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
             }
 
     def __init__(self, label_text=""):
@@ -157,7 +156,7 @@ class HIGClosableTabLabel(HIGHBox):
         #self.property_map = {"label_text" : self.label.get_label}
 
     def __create_widgets(self):
-        self.label = Gtk.Label(self.label_text)
+        self.label = Gtk.Label.new(self.label_text)
         self.close_image = Gtk.Image()
         self.close_image.set_from_stock(Gtk.STOCK_CLOSE, Gtk.IconSize.BUTTON)
         self.close_button = HIGButton()
