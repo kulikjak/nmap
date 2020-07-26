@@ -337,7 +337,7 @@ class WindowConfig(UmitConfigParser, object):
         self.height = self.default_height
 
     def _get_it(self, p_name, default):
-        return config_parser.get(self.section_name, p_name, default)
+        return config_parser.get(self.section_name, p_name, fallback=default)
 
     def _set_it(self, p_name, value):
         config_parser.set(self.section_name, p_name, value)
