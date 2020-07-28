@@ -256,7 +256,7 @@ class ServicesPage(Gtk.Notebook):
                                                 GObject.TYPE_STRING,
                                                 GObject.TYPE_BOOLEAN])
 
-        self.__ports_treeview = Gtk.TreeView(model=self.__ports_store)
+        self.__ports_treeview = Gtk.TreeView.new_with_model(self.__ports_store)
 
         for port in self.__node.get_info('ports'):
 
@@ -355,7 +355,7 @@ class ServicesPage(Gtk.Notebook):
                                                  GObject.TYPE_STRING,
                                                  GObject.TYPE_BOOLEAN])
 
-        self.__xports_treeview = Gtk.TreeView(model=self.__xports_store)
+        self.__xports_treeview = Gtk.TreeView.new_with_model(self.__xports_store)
 
         for xports in self.__node.get_info('extraports'):
 
@@ -524,7 +524,7 @@ class SystemPage(BWScrolledWindow):
                 self.__match_scroll = BWScrolledWindow()
 
                 self.__match_store = Gtk.ListStore.new([str, str, int, bool])
-                self.__match_treeview = Gtk.TreeView(model=self.__match_store)
+                self.__match_treeview = Gtk.TreeView.new_with_model(self.__match_store)
 
                 for os_match in os['matches']:
 
@@ -562,7 +562,7 @@ class SystemPage(BWScrolledWindow):
                 self.__class_scroll = BWScrolledWindow()
 
                 self.__class_store = Gtk.ListStore.new([str, str, str, str, str, bool])
-                self.__class_treeview = Gtk.TreeView(model=self.__class_store)
+                self.__class_treeview = Gtk.TreeView.new_with_model(self.__class_store)
 
                 for os_class in os['classes']:
 
@@ -752,7 +752,7 @@ class TraceroutePage(BWVBox):
             self.__trace_scroll.set_border_width(0)
 
             self.__trace_store = Gtk.ListStore.new([int, str, str, str, str, bool])
-            self.__trace_treeview = Gtk.TreeView(model=self.__trace_store)
+            self.__trace_treeview = Gtk.TreeView.new_with_model(self.__trace_store)
 
             count = 0
 
