@@ -188,4 +188,4 @@ class HIGSpacer(HIGHBox):
 
 
 def hig_box_space_holder():
-    return Gtk.Label(label="    ")
+    return Gtk.Label.new("    ")

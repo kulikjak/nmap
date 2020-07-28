@@ -174,7 +174,7 @@ class BWHBox(Gtk.HBox, BWBox):
     def __init__(self, homogeneous=False, spacing=12):
         """
         """
-        Gtk.HBox.__init__(self, homogeneous, spacing)
+        Gtk.HBox.__init__(self, homogeneous=homogeneous, spacing=spacing)
 
 
 class BWVBox(Gtk.VBox, BWBox):
@@ -183,7 +183,7 @@ class BWVBox(Gtk.VBox, BWBox):
     def __init__(self, homogeneous=False, spacing=12):
         """
         """
-        Gtk.VBox.__init__(self, homogeneous, spacing)
+        Gtk.VBox.__init__(self, homogeneous=homogeneous, spacing=spacing)
 
 
 class BWStatusbar(Gtk.Statusbar, BWBox):
@@ -192,7 +192,7 @@ class BWStatusbar(Gtk.Statusbar, BWBox):
     def __init__(self, homogeneous=False, spacing=12):
         """
         """
-        Gtk.HBox.__init__(self, homogeneous, spacing)
+        Gtk.HBox.__init__(self, homogeneous=homogeneous, spacing=spacing)
 
 
 class BWTable(Gtk.Table, BWBox):
@@ -201,7 +201,8 @@ class BWTable(Gtk.Table, BWBox):
     def __init__(self, rows=1, columns=1, homogeneous=False):
         """
         """
-        Gtk.Table.__init__(self, rows, columns, homogeneous)
+        Gtk.Table.__init__(self, n_rows=rows, n_columns=columns,
+                           homogeneous=homogeneous)
         self.bw_set_spacing(12)
 
         self.__rows = rows
