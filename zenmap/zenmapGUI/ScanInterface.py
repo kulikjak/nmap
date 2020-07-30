@@ -364,7 +364,7 @@ class ScanInterface(HIGVBox):
         self.set_profile_name_quiet("")
 
     def _target_entry_changed(self, editable):
-        target_string = self.toolbar.selected_target
+        target_string = self.toolbar.get_selected_target()
         targets = split_quoted(target_string)
 
         ops = NmapOptions()
@@ -377,8 +377,8 @@ class ScanInterface(HIGVBox):
         entries. If the command corresponding to the current profile is not
         blank, use it. Otherwise use the current contents of the command
         entry."""
-        profile_name = self.toolbar.selected_profile
-        target_string = self.toolbar.selected_target
+        profile_name = self.toolbar.get_selected_profile()
+        target_string = self.toolbar.get_selected_target()
 
         cmd_profile = CommandProfile()
         command_string = cmd_profile.get_command(profile_name)
@@ -395,7 +395,7 @@ class ScanInterface(HIGVBox):
         if len(targets) > 0:
             ops.target_specs = targets
         else:
-            self.toolbar.selected_target = join_quoted(ops.target_specs)
+            self.toolbar.set_selected_target(join_quoted(ops.target_specs))
 
         self.set_command_quiet(ops.render_string())
 
@@ -413,7 +413,7 @@ class ScanInterface(HIGVBox):
         further "changed" signals."""
         self.toolbar.target_entry.handler_block(
                 self.target_entry_changed_handler)
-        self.toolbar.selected_target = target_string
+        self.toolbar.set_selected_target(target_string)
         self.toolbar.target_entry.handler_unblock(
                 self.target_entry_changed_handler)
 
@@ -422,7 +422,7 @@ class ScanInterface(HIGVBox):
         further "changed" signals."""
         self.toolbar.profile_entry.handler_block(
                 self.profile_entry_changed_handler)
-        self.toolbar.selected_profile = profile_name
+        self.toolbar.set_selected_profile(profile_name)
         self.toolbar.profile_entry.handler_unblock(
                 self.profile_entry_changed_handler)
 
